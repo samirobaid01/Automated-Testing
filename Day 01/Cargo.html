@@ -1,0 +1,87 @@
+<html>
+ <head>
+ <style> 
+	body {
+	  background-image: url("./Contents/33.JPG");
+	  background-repeat: no-repeat, repeat;
+	  background-color: #cccccc;
+	}
+</style>
+<script src="./Contents/jquery.min.js"></script>
+<script>
+	
+	$(document).ready(function(){
+		$("#btnshipment").click(function(){
+			var boxSize=parseFloat($("#textBoxSize").val());
+			var boxWeight=parseFloat($("#textBoxWeight").val());
+			var decision;
+			if(boxSize>=1&&boxSize<=10&& boxWeight>=1&& boxWeight<=10)
+				{
+					decision="item will be delivered by air with freight charges 100$";
+				}
+			else if(boxSize>=11&&boxSize<=20&& boxWeight>=1&& boxWeight<=10)
+				{
+					decision="item will be delivered by ship with freight charges 105$";
+				}
+			else if(boxSize>=11&&boxSize<=20&& boxWeight>=11&& boxWeight<=15)
+				{					
+					decision="item will be delivered by ship with freight charges 110$";
+				}
+			else if(boxSize>=1&&boxSize<=10&& boxWeight>=11&& boxWeight<=15)
+				{					
+					decision="item will be delivered by air with freight charges 105$";
+				}
+			else if(boxSize>=21&&boxSize<=30&& boxWeight>=16&& boxWeight<=20)
+				{
+					decision="item will be delivered by ship with freight charges 120$";
+				}
+				
+					alert(decision);
+			document.getElementById("msg").style.display="block";
+			$("#deliveredBy").text(decision);
+	  });
+	}); 
+</script>
+  <link rel="stylesheet" href="./Contents/bootstrap.min.css">
+ </head>
+ <body>
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-lg-4"></div>
+				<div class="col-lg-6">
+					<h1>Grade Sheet</h1>
+				</div>
+				<div class="col-lg-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8" id="preReq">
+				<table class="table">			  
+				  <tbody>
+					<tr>
+					  <td><b>Box Size</b></td>
+					  <td><input type="text" id="textBoxSize"/></td>
+					</tr>
+					<tr>
+					  <td><b>Box Weight</b></td>
+					  <td><input type="text" id="textBoxWeight"/></td>
+					</tr>
+					<tr>
+					  <td><b></b></td>
+					  <td><button type="button" id="btnshipment" class="btn btn-primary">how to Deliver</button></td>
+					</tr>
+				  </tbody>
+				</table>
+				<div class="jumbotron" id="msg" style="display :none">
+					  <h3>Item will be delivered by</h3>
+					 <br /> <h4 id="deliveredBy"></h4>
+					  <hr class="my-4">
+					  <p class="lead">
+						<a class="btn btn-primary btn-lg" href="#" role="button">View</a>
+					  </p>
+					</div>				
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

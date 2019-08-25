@@ -1,0 +1,160 @@
+<html>
+ <head>
+ <style> 
+	body {
+	  background-image: url("./Contents/33.JPG");
+	  background-repeat: no-repeat, repeat;
+	  background-color: #cccccc;
+	}
+</style>
+<script src="./Contents/jquery.min.js"></script>
+<script>
+	var bankReserves=-1;
+	var accBalance=-1;
+	$(document).ready(function(){
+		$(".copySelect").click(function(){
+			$("#secondSelect").val($("#firstSelect").val());
+	  });
+		$(".radio").click(function(){
+			if(document.getElementById("msg").style.display!="block")
+			{ 
+			document.getElementById("msg").style.display="block";
+			}
+			else
+			{
+			document.getElementById("msg").style.display="none";
+			}
+		});
+		$("#btnRegister").click(function(){
+			var txt;
+			var r = confirm("Press a button!");
+			if (r == true) {
+			  alert("Registered successfully");
+			} else {
+			  alert("You pressed Cancel!");
+			}
+		});
+	}); 
+	
+</script>
+  <link rel="stylesheet" href="./Contents/bootstrap.min.css">
+ </head>
+ <body>
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-lg-4"></div>
+				<div class="col-lg-6">
+					<h1>  Registration Form</h1>
+				</div>
+				<div class="col-lg-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8" id="preReq">
+				<table class="table">			  
+				  <tbody>
+					<tr>
+					  <td><b>First Name</b></td>
+					  <td><input type="text" id="textFirstName"/></td>
+					</tr>
+					<tr>
+					  <td><b>Last Name</b></td>
+					  <td><input type="text" id="textLastName"/></td>
+					</tr>
+					<tr>
+					  <td><b>Email</b></td>
+					  <td><input type="text" id="textEmail"/></td>
+					</tr>
+					<tr>
+					  <td><b>Password</b></td>
+					  <td><input type="password" id="textPassword"/></td>
+					</tr>
+					<tr>
+					  <td><b>Gender</b></td>
+					  <td>
+						  <select class="form-control" id="gender">
+							<option>Male</option>
+							<option>Female</option>							
+						  </select>
+					  </td>
+					</tr>
+					<tr>
+						<td><b>Activities</b></td>
+						<td>
+						  <select name="first" id="firstSelect" multiple>
+						  <option value="1">Books</option>
+						  <option value="2">Movies</option>
+						  <option value="3">Sports</option>
+						  <option value="4">Photography</option>
+						  <option value="5">others</option>
+						</select>
+						<select name="second" id="secondSelect" multiple>
+						  <option value="2">Movies</option>
+						  <option value="1">Books</option>
+						  <option value="4">Photography</option>
+						  <option value="5">others</option>
+						  <option value="3">Sports</option>
+						</select>
+						<button class="copySelect">copy</button>
+						</div> 
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						    <div class="radio"> 
+								  <label><input type="radio" name="optradio">Like to provide personal details</label>
+							</div>
+					    </td>
+						<td>
+							<div class="jumbotron" id="msg" style="display :none">
+							  <table>
+								<tr>
+									<td>
+										Total Family Members
+									</td>
+									<td>
+										<input type="text" id="textFamilyMembers"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Monthly Income
+									</td>
+									<td>
+										<input type="text" id="textMonthlyIncome"/>
+									</td>
+								</tr>
+							  </table>
+							</div>		
+						</td>
+					</tr>
+					<tr>
+						<td>						  
+							<div class="radio"> 
+							  <label><input type="radio" name="optradio" checked>I would rather provide later</label>
+							</div>	
+						</td>					
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="checkbox">
+							  <label><input type="checkbox" value="">I agree with terms and conditions</label>
+							</div>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+					  <td>
+					  </td>
+					  <td><button type="button" id="btnRegister" class="btn btn-primary">Register</button></td>
+					</tr>
+				  </tbody>
+				</table>						
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

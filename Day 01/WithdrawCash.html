@@ -1,0 +1,106 @@
+<html>
+ <head>
+ <style> 
+	body {
+	  background-image: url("./Contents/33.JPG");
+	  background-repeat: no-repeat, repeat;
+	  background-color: #cccccc;
+	}
+</style>
+<script src="./Contents/jquery.min.js"></script>
+<script>
+	var bankReserves;
+	var accBalance;
+	$(document).ready(function(){
+		$("#btnSave").click(function(){
+			bankReserves=parseFloat($("#textBankReserves").val());
+			accBalance=parseFloat($("#textAccBalance").val());
+			$("#textBankReserves").prop( "disabled", true );
+			$("#textAccBalance").prop( "disabled", true );
+			$("#btnSave").prop( "disabled", true );
+			document.getElementById("msg").style.display="block";
+			$("#reserve").text(bankReserves);
+	  });
+		 $("#btnWithdraw").click(function(){
+		  var withdrawAmount=parseFloat($("#textwithdraw").val());
+			if(withdrawAmount%500!=0)
+			{
+				alert("amount must be * of 500");
+			}
+			else if(withdrawAmount > bankReserves){
+					alert("invalid amount!!!! Withdraw amount "+withdrawAmount+ " is greater than bank reserve "+bankReserves);
+			}
+			else if(withdrawAmount>accBalance){
+				alert("invalid amount!!!! Withdraw amount "+withdrawAmount+ " is greater than account balance" + accBalance);
+			}
+			else
+			{
+				alert("amount withdrawed");
+				bankReserves-=$("#textwithdraw").val();
+				accBalance-=$("#textwithdraw").val();
+				$("#reserve").text(bankReserves+ "   "+accBalance);
+			}
+		  });
+	}); 
+</script>
+  <link rel="stylesheet" href="./contents/bootstrap.min.css">
+ </head>
+ <body>
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-lg-4"></div>
+				<div class="col-lg-6">
+					<h1>Money In The Bank</h1>
+				</div>
+				<div class="col-lg-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8" id="preReq">
+				<table class="table">			  
+				  <tbody>
+					<tr>
+					  <td><b>Bank Reserves</b></td>
+					  <td><input type="text" id="textBankReserves"/></td>
+					</tr>
+					<tr>
+					  <td><b>Account Balance</b></td>
+					  <td><input type="text" id="textAccBalance"/></td>
+					</tr>
+					<tr>
+					  <td><b></b></td>
+					  <td><button type="button" id="btnSave" class="btn btn-primary">Save changes</button></td>
+					</tr>
+				  </tbody>
+				</table>
+				<div class="jumbotron" id="msg" style="display :none">
+					  <h3>Please consider following!</h3>
+					  Bank Reserves: <h4 id="reserve"></h4>
+					  <hr class="my-4">
+					  <p>amount must be multiple of 500 and less then bank's reserves plus account balance</p>
+					  <p class="lead">
+						<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+					  </p>
+					</div>				
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-lg-6">
+					<table class="table">			  
+					  <tbody>
+						<tr>
+					  <td><b>Withdraw Amount</b></td>
+					  <td><input type="text" id="textwithdraw"/></td>
+					</tr>					
+					<tr>
+					  <td><b></b></td>
+					  <td><button type="button" id="btnWithdraw" class="btn btn-success">Withdraw</button></td>
+					</tr>
+					  </tbody>
+				  </table>
+				</div>
+				<div class="col-lg-2"></div>
+		</div>
+	</div>
+ </body>
+</html>
